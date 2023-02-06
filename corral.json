@@ -1,0 +1,13 @@
+{
+  "packages": [
+    "immutable-json"
+  ],
+  "deps": [],
+  "info": {
+    "description": "like the ponylang stdlib json library - just everything `val`",
+    "homepage": "https://github.com/mfelsche/pony-immutable-json",
+    "license": "BSD-2-Clause",
+    "version": "0.0.1",
+    "name": "immutable-json"
+  }
+}
