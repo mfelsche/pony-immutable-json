@@ -1,5 +1,5 @@
 use ".."
-use "ponytest"
+use "pony_test"
 use "collections"
 
 primitive JSONTests is TestList

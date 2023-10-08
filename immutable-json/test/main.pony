@@ -1,4 +1,4 @@
-use "ponytest"
+use "pony_test"
 
 actor Main is TestList
   new create(env: Env) =>
@@ -6,3 +6,4 @@ actor Main is TestList
 
   fun tag tests(test: PonyTest) =>
     JSONTests.tests(test)
+    JSONPathTests.tests(test)
