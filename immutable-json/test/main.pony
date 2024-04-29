@@ -7,3 +7,4 @@ actor Main is TestList
   fun tag tests(test: PonyTest) =>
     JSONTests.tests(test)
     JSONPathTests.tests(test)
+    JSONBuilderTests.tests(test)

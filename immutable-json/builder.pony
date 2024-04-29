@@ -1,5 +1,7 @@
 use "collections"
 
+interface JsonBuilder
+  fun ref build(): JsonType
 
 class Obj
   """
@@ -14,8 +16,12 @@ class Obj
   new iso create() =>
     data = Map[String, JsonType].create(4)
 
-  fun ref apply(key: String, value: JsonType): Obj =>
-    data(key) = value
+  fun ref apply(key: String, value: (JsonType | JsonBuilder)): Obj =>
+    data(key) =
+      match value
+      | let t: JsonType => t
+      | let builder: JsonBuilder => builder.build()
+      end
     consume this
 
   fun ref build(): JsonObject =>
@@ -35,8 +41,13 @@ class Arr
   new iso create() =>
     data = Array[JsonType].create(4)
 
-  fun ref apply(elem: JsonType): Arr =>
-    data.push(elem)
+  fun ref apply(elem: (JsonType | JsonBuilder)): Arr =>
+    data.push(
+      match elem
+      | let t: JsonType => t
+      | let builder: JsonBuilder => builder.build()
+      end
+    )
     consume this
 
   fun ref build(): JsonArray =>

@@ -45,6 +45,7 @@ class \nodoc\ iso _ParserRFCExamples is UnitTest
     "$[0,0]"
     "$..*"
     "$.o..[*,*]"
+    "$.foo.*.bar"
   ]
 
   fun name(): String => "jsonpath/parser/rfc_examples"
