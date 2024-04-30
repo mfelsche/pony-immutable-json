@@ -13,7 +13,7 @@ class Obj
   """
   var data: Map[String, JsonType] trn
 
-  new iso create() =>
+  new ref create() =>
     data = Map[String, JsonType].create(4)
 
   fun ref apply(key: String, value: (JsonType | JsonBuilder)): Obj =>
@@ -33,15 +33,15 @@ class Arr
   JsonArray Builder
 
   ```pony
-  let json_array = Array("key")(14.5)(Obj("nested", None)).build()
+  let json_array = Arr("key")(14.5)(Obj("nested", None)).build()
   ```
   """
   var data: Array[JsonType] trn
 
-  new iso create() =>
+  new ref create() =>
     data = Array[JsonType].create(4)
 
-  fun ref apply(elem: (JsonType | JsonBuilder)): Arr =>
+  fun ref apply(elem: (JsonType | JsonBuilder)): Arr ref^ =>
     data.push(
       match elem
       | let t: JsonType => t
